@@ -60,7 +60,7 @@ Some test cases have been updated because the registration form has changed.
 
 To test permissions of group member's roles, I created roles and permissions matrix:
 
-📝 **Link to the matrix with test results**: [Permissions-Tests](https://raw.githubusercontent.com/joannabrodowicz/Paychi-manual-testing/refs/heads/main/docs/Permissions_Tests.md?token=GHSAT0AAAAAADVNKDM3ZKY64OAQTTKJVSSA2P7L42A)
+📝 **Link to the matrix with test results**: [Permissions-Tests](https://github.com/joannabrodowicz/Paychi-manual-testing/blob/main/docs/Permissions_Tests.md)
 
 Visual tests (UI consistency and responsiveness) I conducted using an exploratory method.
 
