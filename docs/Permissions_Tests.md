@@ -1,23 +1,27 @@
 # Permissions of group member's roles
 
+I performed role‑based permission testing to verify how different user roles interact with system functions and to identify any inconsistencies in the permission logic.
+
 ## Roles and permissions matrix - expected behaviours
 
-| Action                             | Owner            | Admin            | Member           |
-| ---------------------------------- | ---------------- | ---------------- | ---------------- |
-| Invite new members to the group    | ✅ Allowed       | ✅ Allowed       | ❌ Not Allowed   |
-| Remove regular members             | ✅ Allowed       | ✅ Allowed       | ❌ Not Allowed   |
-| Remove admins                      | ✅ Allowed       | ❌ Not Allowed   | ❌ Not Allowed   |
-| Remove owner                       | ❌ Not Allowed   | ❌ Not Allowed   | ❌ Not Allowed   |
-| Change roles                       | ✅ Allowed       | ❌ Not Allowed   | ❌ Not Allowed   |
-| Create group shopping lists        | ✅ Allowed       | ✅ Allowed       | ✅ Allowed       |
-| Add items to shopping lists        | ✅ Allowed       | ✅ Allowed       | ✅ Allowed       |
-| Remove items from shopping lists   | ✅ Allowed       | ✅ Allowed       | ✅ Allowed       |
-| Delete shopping lists              | 🔲 To Be Defined | 🔲 To Be Defined | 🔲 To Be Defined |
-| Create group expenses              | ✅ Allowed       | ✅ Allowed       | ✅ Allowed       |
-| Delete expense (no settlements)    | 🔲 To Be Defined | 🔲 To Be Defined | 🔲 To Be Defined |
-| Delete expense (settlements exist) | ❌ Not Allowed   | ❌ Not Allowed   | ❌ Not Allowed   |
+| Action                             | Owner         | Admin         | Member        |
+| ---------------------------------- | ------------- | ------------- | ------------- |
+| Invite new members to the group    | Allowed       | Allowed       | Not Allowed   |
+| Remove regular members             | Allowed       | Allowed       | Not Allowed   |
+| Remove admins                      | Allowed       | Not Allowed   | Not Allowed   |
+| Remove owner                       | Not Allowed   | Not Allowed   | Not Allowed   |
+| Change roles                       | Allowed       | Not Allowed   | Not Allowed   |
+| Create group shopping lists        | Allowed       | Allowed       | Allowed       |
+| Add items to shopping lists        | Allowed       | Allowed       | Allowed       |
+| Remove items from shopping lists   | Allowed       | Allowed       | Allowed       |
+| Delete shopping lists              | To Be Defined | To Be Defined | To Be Defined |
+| Create group expenses              | Allowed       | Allowed       | Allowed       |
+| Delete expense (no settlements)    | To Be Defined | To Be Defined | To Be Defined |
+| Delete expense (settlements exist) | Not Allowed   | Not Allowed   | Not Allowed   |
 
 ---
+
+Permissions related to deleting shopping lists and expenses were marked as To Be Defined, because the developer confirmed that the logic for these permissions was still being designed.
 
 ## Roles and permissions matrix - test results
 
@@ -36,13 +40,18 @@
 | Delete expense (no settlements)    | See notes below | See notes below | See notes below |
 | Delete expense (settlements exist) | Passed          | Passed          | Passed          |
 
+Of the 36 permission combinations, 30 work correctly.
+
 ---
 
 ## Notes
 
-Current behaviors of not defined permissions: only the creator of the shopping list or expense can delete group lists, regardless of the group role.
+Current behavior of undefined permissions:
 
-Expected future behavior (per developer roadmap):
+Only the creator of a shopping list or expense can delete it, regardless of their group role.
 
-- Member: will lose the ability to delete any list or expense
-- Owner and Admin: will gain the ability to delete all list or expense (without settlements) in the group
+Expected future behavior (based on developer roadmap):
+
+Member: will lose the ability to delete any list or expense.
+
+Owner & Admin: will gain the ability to delete any list or expense in the group (as long as no settlements are attached).
