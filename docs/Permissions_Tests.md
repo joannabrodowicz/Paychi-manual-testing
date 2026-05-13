@@ -21,7 +21,7 @@ I performed role‑based permission testing to verify how different user roles i
 
 ---
 
-Permissions related to deleting shopping lists and expenses were marked as To Be Defined, because the developer confirmed that the logic for these permissions was still being designed.
+Permissions related to deleting shopping lists and expenses were marked as "To Be Defined", because the developer confirmed that the logic for these permissions was still being designed.
 
 ## Roles and permissions matrix - test results
 
@@ -48,10 +48,10 @@ Of the 36 permission combinations, 30 work correctly.
 
 Current behavior of undefined permissions:
 
-Only the creator of a shopping list or expense can delete it, regardless of their group role.
+Shopping lists and expenses can only be deleted by their creator, regardless of the role in the group, e.g. a member can delete a group list that he created himself, the owner cannot delete a list created by a member
 
 Expected future behavior (based on developer roadmap):
 
 Member: will lose the ability to delete any list or expense.
 
-Owner & Admin: will gain the ability to delete any list or expense in the group (as long as no settlements are attached).
+Owner & Admin: will gain the ability to delete every list or expense in the group (as long as no settlements are attached).
